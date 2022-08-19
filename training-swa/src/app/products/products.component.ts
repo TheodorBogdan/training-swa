@@ -61,10 +61,12 @@ export class ProductsComponent implements OnInit {
   async getProducts() {
     this.errorMessage = undefined;
     this.productService.getAll().subscribe(
-      (_) => {
-        /*.. do nothing for success.. */
-      },
-      (error: any) => (this.errorMessage = 'Unauthorized'),
+      {
+        next: (_) => {
+          /*.. do nothing for success.. */
+        },
+        error: (error: any) => (this.errorMessage = 'Unauthorized')
+      }
     );
     this.clear();
   }

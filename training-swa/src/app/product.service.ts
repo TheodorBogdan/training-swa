@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { Product } from './models/product.model';
-
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,9 @@ export class ProductService {
 
   public entities$: Observable<Product[]>;
 
-  constructor() {
+  constructor(
+    private readonly http: HttpClient
+  ) {
     this.entities$ = this._products.asObservable();
   }
 
@@ -19,7 +22,8 @@ export class ProductService {
   }
 
   public getAll(): Observable<any> {
-    return this.entities$;
+    return this.http.get<Product[]>(`${environment.apiUrl}`)
+      .pipe(tap((t: Product[]) => this._products.next(t)));
   }
 
   public add(product: Product): void {
