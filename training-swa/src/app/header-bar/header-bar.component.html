@@ -11,6 +11,10 @@
             </a>
             <a class="navbar-item nav-home" href="/.auth/login/github?post_login_redirect_uri=/products">Login</a>
             <a class="navbar-item nav-home" href="/.auth/logout">Log out</a>
+            <span class="navbar-item nav-home" (click)="showUserDetails()">Log out</span>
         </div>
     </nav>
 </header>
+
+<app-modal class="modal-product" [message]="message" [isOpen]="showModal" (handleNo)="closeModal()"
+    (handleYes)="closeModal()"></app-modal>
