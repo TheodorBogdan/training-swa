@@ -15,6 +15,7 @@ import { ListHeaderComponent } from './list-header/list-header.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppButtonFooterComponent,
     ProductsComponent,
     ModalComponent,
-    ListHeaderComponent
+    ListHeaderComponent,
+    HeaderBarComponent
   ],
   imports: [
     BrowserModule,
