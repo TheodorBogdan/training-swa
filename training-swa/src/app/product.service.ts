@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   public getAll(): Observable<any> {
-    return this.http.get<Product[]>(`${environment.apiUrl}`)
+    return this.http.get<Product[]>(`${environment.apiUrl}/products`)
       .pipe(tap((t: Product[]) => this._products.next(t)));
   }
 
